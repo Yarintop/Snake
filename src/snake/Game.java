@@ -139,11 +139,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
 
         // Drawing logic
         Graphics2D g = (Graphics2D) bs.getDrawGraphics();
-<<<<<<< HEAD
-        g.setColor(Color.YELLOW);
-=======
-        g.setColor(Color.PINK);
->>>>>>> f8bef6bf745fdd09c8bc489976a2c21bb7d59ca6
+        g.setColor(Color.GREEN);
         g.fillRect(0, 0, getWidth(), getHeight());
         cherryItem.draw(g);
         snake.draw(g);
