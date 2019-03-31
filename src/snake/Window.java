@@ -14,10 +14,10 @@ public class Window {
     }
 
     private static void initAndStart(Dimension dim) {
-        Game game = new Game(800, 700);
+        Game game = new Game(700, 700);
         JFrame frame = new JFrame("Snake!");
-        frame.setSize(800, 700); // should not be hard coded
-        game.setSize(800, 700);
+        frame.setSize(700, 700); // should not be hard coded
+        game.setSize(700, 700);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
         frame.setVisible(true);
