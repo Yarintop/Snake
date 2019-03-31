@@ -3,7 +3,12 @@ package snake;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import javax.imageio.ImageIO;
 
 public class Snake {
 
@@ -18,11 +23,20 @@ public class Snake {
     public Point head;
     public int direction, currDirection;
 
+    private BufferedImage bodyPart;
+    private BufferedImage headImg;
+
     public Snake(int x, int y, int size) {
         head = new Point(x, y);
         direction = DOWN;
         dy = size;
         tailLength = 1;
+        try {
+            bodyPart = ImageIO.read(new File("src/res/snake_part.png"));
+            headImg = ImageIO.read(new File("src/res/head.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         snakeParts = new ArrayList<Point>();
         this.size = size;
 
@@ -74,8 +88,10 @@ public class Snake {
         Color tmp = g.getColor();
         g.setColor(Color.white);
         for (Point p : snakeParts)
-            g.fillRect((int) p.getX(), (int) p.getY(), size, size);
-        g.fillRect((int) head.getX(), (int) head.getY(), size, size);
+            // g.fillRect((int) p.getX(), (int) p.getY(), size, size);
+            g.drawImage(bodyPart, (int) p.getX(), (int) p.getY(), size, size, null);
+        // g.fillRect((int) head.getX(), (int) head.getY(), size, size)
+        g.drawImage(headImg, (int) head.getX(), (int) head.getY(), size, size, null);
         g.setColor(tmp);
     }
 

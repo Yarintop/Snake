@@ -7,7 +7,12 @@ import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.Random;
+
+import javax.imageio.ImageIO;
 
 public class Game extends Canvas implements Runnable, KeyListener {
     final static long serialVersionUID = 1L;
@@ -27,10 +32,17 @@ public class Game extends Canvas implements Runnable, KeyListener {
     private Snake snake;
     private Item cherryItem;
 
+    private BufferedImage bg;
+
     public Game(int width, int height) {
         WIDTH = width;
         HEIGHT = height;
         gameThread = new Thread(this);
+        try {
+            bg = ImageIO.read(new File("src/res/bg.jpg"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         addKeyListener(this);
         initGame();
 
@@ -139,8 +151,9 @@ public class Game extends Canvas implements Runnable, KeyListener {
 
         // Drawing logic
         Graphics2D g = (Graphics2D) bs.getDrawGraphics();
-        g.setColor(Color.YELLOW);
+        g.setColor(Color.BLACK);
         g.fillRect(0, 0, getWidth(), getHeight());
+        g.drawImage(bg, 0, 0, getWidth(), getHeight(), null);
         cherryItem.draw(g);
         snake.draw(g);
         g.setColor(Color.white);
