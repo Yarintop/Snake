@@ -2,6 +2,7 @@ package snake;
 
 import java.awt.Canvas;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import java.awt.event.KeyEvent;
@@ -31,6 +32,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
 
     private Snake snake;
     private Item cherryItem;
+    private Font font;
 
     private BufferedImage bg;
 
@@ -38,6 +40,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
         WIDTH = width;
         HEIGHT = height;
         gameThread = new Thread(this);
+        font = new Font("SansSerif", Font.BOLD, 20);
         try {
             bg = ImageIO.read(new File("src/res/bg.jpg"));
         } catch (IOException e) {
@@ -151,12 +154,13 @@ public class Game extends Canvas implements Runnable, KeyListener {
 
         // Drawing logic
         Graphics2D g = (Graphics2D) bs.getDrawGraphics();
+        g.setFont(font);
         g.setColor(Color.BLACK);
         g.fillRect(0, 0, getWidth(), getHeight());
         g.drawImage(bg, 0, 0, getWidth(), getHeight(), null);
         cherryItem.draw(g);
         snake.draw(g);
-        g.setColor(Color.white);
+        g.setColor(Color.ORANGE);
         g.drawString("Score: " + score, 50, 30);
         //
 
