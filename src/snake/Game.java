@@ -35,6 +35,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
     private Font font;
 
     private BufferedImage bg;
+    private BufferedImage gameOverMeme;
 
     public Game(int width, int height) {
         WIDTH = width;
@@ -43,6 +44,7 @@ public class Game extends Canvas implements Runnable, KeyListener {
         font = new Font("SansSerif", Font.BOLD, 20);
         try {
             bg = ImageIO.read(new File("src/res/bg.jpg"));
+            gameOverMeme = ImageIO.read(new File("src/res/gameover.png"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -162,6 +164,9 @@ public class Game extends Canvas implements Runnable, KeyListener {
         snake.draw(g);
         g.setColor(Color.ORANGE);
         g.drawString("Score: " + score, 50, 30);
+
+        if (isGameOver)
+            g.drawImage(gameOverMeme, (int)(getWidth()*0.1), (getHeight()/2)-(gameOverMeme.getHeight()/2), 4*getWidth()/5, getHeight()/2, null);
         //
 
         bs.show();
