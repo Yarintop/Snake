@@ -6,9 +6,16 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Window",
+            "request": "launch",
+            "mainClass": "snake.Window",
+            "projectName": "Snake"
+        },
+        {
+            "type": "java",
             "name": "Debug (Launch) - Current File",
             "request": "launch",
-            "console": "integratedTerminal",
+            "console": "externalTerminal",
             "mainClass": "${file}"
         },
         {

@@ -10,7 +10,6 @@ public class Window {
     public static void main(String[] args) {
         Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
         initAndStart(dim);
-
     }
 
     private static void initAndStart(Dimension dim) {
